@@ -4,6 +4,10 @@ WORKDIR /usr/src/app
 
 COPY . .
 
+RUN npm install
+
+RUN ln -s public html
+
 EXPOSE 3000
 
 CMD ["node","index.js"]
