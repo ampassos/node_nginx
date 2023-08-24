@@ -4,7 +4,6 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-<<<<<<< HEAD
 RUN  npm install && \
     apt update && \
     apt install -y wget netcat-traditional && \
@@ -14,10 +13,4 @@ RUN  npm install && \
 EXPOSE 3000
 
 #CMD ["node","index.js"]
-=======
-RUN npm install
 
-EXPOSE 3000
-
-CMD ["node","index.js"]
->>>>>>> ff10cfe774cd25342092ea1dabc9f70a3d26d8fe
