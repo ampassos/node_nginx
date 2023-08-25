@@ -10,14 +10,9 @@ services:
     entrypoint: wait-for db:3306 -t 40 -- sh -c "npm install && node index.js"
     volumes:
       - ./node:/usr/src/app
-<<<<<<< HEAD
-=======
-      #- /usr/src/app/node_modules
->>>>>>> 5c8d27aac11f578f8c19606715e50f900cc6b759
     tty: true
     depends_on:
-      - db
-  
+      - db  
   db:
     image: mysql:5.7
     container_name: db
@@ -29,7 +24,6 @@ services:
     environment:
       - MYSQL_DATABASE=nodedb
       - MYSQL_ROOT_PASSWORD=root
-    
     networks:
       - node-network
     
