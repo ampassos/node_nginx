@@ -7,20 +7,13 @@ services:
     container_name: app
     networks:
       - node-network
-    entrypoint: wait-for db:3306 -t 40 -- node index.js
+    entrypoint: wait-for db:3306 -t 40 -- sh -c "npm install && node index.js"
     volumes:
       - ./node:/usr/src/app
-<<<<<<< HEAD
-      #- /usr/src/app/node_modules
-=======
-      - /usr/src/app/node_modules
->>>>>>> ff10cfe774cd25342092ea1dabc9f70a3d26d8fe
     tty: true
-    ports: 
-      - "3000:3000"
     depends_on:
       - db
-    
+  
   db:
     image: mysql:5.7
     container_name: db
@@ -28,6 +21,7 @@ services:
     tty: true
     volumes:
       - ./mysql:/var/lib/mysql
+      - ./script.sql:/docker-entrypoint-initdb.d/script.sql
     environment:
       - MYSQL_DATABASE=nodedb
       - MYSQL_ROOT_PASSWORD=root
@@ -44,6 +38,8 @@ services:
       - node-network
     ports:
       - "8080:80"
+    depends_on:
+      - app
 
 networks:
   node-network:
