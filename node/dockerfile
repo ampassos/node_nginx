@@ -2,22 +2,7 @@ FROM node:18
 
 WORKDIR /usr/src/app
 
-<<<<<<< HEAD
 RUN apt update && \
     apt install -y wget netcat-traditional && \
     wget -q -O /usr/bin/wait-for https://raw.githubusercontent.com/eficode/wait-for/v2.2.3/wait-for && \
     chmod +x /usr/bin/wait-for
-=======
-COPY . .
-
-RUN  npm install && \
-    apt update && \
-    apt install -y wget netcat-traditional && \
-    wget -q -O /usr/bin/wait-for https://raw.githubusercontent.com/eficode/wait-for/v2.2.3/wait-for && \
-    chmod +x /usr/bin/wait-for
-
-EXPOSE 3000
-
-#CMD ["node","index.js"]
-
->>>>>>> 5c8d27aac11f578f8c19606715e50f900cc6b759
